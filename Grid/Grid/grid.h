@@ -200,7 +200,7 @@ void Grid<T>::addCol(LinkedList<T> list) {
 			previousColumnNode = topRight;
 			topRight = new gNode<T>(list.get(0));
 			current = topRight;
-			current->previous = previousRowNode;
+			current->previous = previousColumnNode;
 			previousColumnNode->next = current;
 
 			for (int i = 1; i < list.getSize(); i++) {

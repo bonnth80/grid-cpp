@@ -1,13 +1,2 @@
-﻿  grid.cpp
-c:\users\zeros\onedrive\repositories\gridcpp\grid\grid\linkedlist.h(88): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
-  c:\users\zeros\onedrive\repositories\gridcpp\grid\grid\linkedlist.h(113): note: see reference to class template instantiation 'LinkedList<T>' being compiled
-c:\users\zeros\onedrive\repositories\gridcpp\grid\grid\linkedlist.h(190): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
-  Generating Code...
-  Compiling...
-  source.cpp
-c:\users\zeros\onedrive\repositories\gridcpp\grid\grid\linkedlist.h(88): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
-  c:\users\zeros\onedrive\repositories\gridcpp\grid\grid\linkedlist.h(113): note: see reference to class template instantiation 'LinkedList<T>' being compiled
-c:\users\zeros\onedrive\repositories\gridcpp\grid\grid\linkedlist.h(190): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
-  Generating Code...
-  Grid.vcxproj -> C:\Users\zeros\OneDrive\Repositories\gridcpp\Grid\Debug\Grid.exe
+﻿  Grid.vcxproj -> C:\Users\zeros\OneDrive\Repositories\gridcpp\Grid\Debug\Grid.exe
   Grid.vcxproj -> C:\Users\zeros\OneDrive\Repositories\gridcpp\Grid\Debug\Grid.pdb (Full PDB)
