@@ -155,9 +155,7 @@ void Grid<T>::addRow(LinkedList<T> list) {
 				previousRowNode = previousRowNode->next;
 
 				current->upper = previousRowNode;
-				previousRowNode->lower = current;
-
-				
+				previousRowNode->lower = current;				
 			}
 
 			bottomRight = current;
@@ -170,7 +168,58 @@ void Grid<T>::addRow(LinkedList<T> list) {
 
 template<typename T>
 void Grid<T>::addCol(LinkedList<T> list) {
-	return;
+	// only add if list is correct size or grid is empty
+	if ((list.getSize() > 0) && (list.getSize() == getColSize() || getColSize() == 0)) {
+		gNode<T> *current = topLeft;
+		gNode<T> *previousColumnNode = nullptr;
+
+		// if the added column is the only existing column
+		if (getRowSize() == 0) {
+			sizeCol = list.getSize();
+
+			gNode<T> *previous = nullptr;
+
+			// set first node as topLeft and topRight limits
+			topLeft = topRight = new gNode<T>(list.get(0));
+			current = topLeft;
+
+			// add list elements to grid
+			for (int i = 1; i < list.getSize(); i++) {
+				current->lower = new gNode<T>(list.get(i));
+				previous = current;
+				current = current->lower;
+				current->upper = previous;
+			}
+
+			// set last node as bottomLeft and bottomRight limits
+			bottomLeft = bottomRight = current;
+		}
+
+		// if the added column is being appended onto an existing set
+		else {
+			previousColumnNode = topRight;
+			topRight = new gNode<T>(list.get(0));
+			current = topRight;
+			current->previous = previousRowNode;
+			previousColumnNode->next = current;
+
+			for (int i = 1; i < list.getSize(); i++) {
+				current->lower = new gNode<T>(list.get(i));
+				(current->lower)->upper = current;
+
+				current = current->lower;
+				previousColumnNode = previousColumnNode->lower;
+
+				current->previous = previousColumnNode;
+				previousColumnNode->next = current;
+			}
+
+			bottomRight = current;
+		}
+
+		// increase the column size
+		sizeRow++;
+	}
 }
 
 template<typename T>
