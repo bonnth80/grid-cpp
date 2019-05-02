@@ -62,8 +62,8 @@ public:
 	// Modifiers
 	void addRow(LinkedList<T>);			// done - Tom;
 	void addCol(LinkedList<T>);			// done - Tom;
-	LinkedList<T> removeRow(int);		// set default int to sizeCol - 1
-	LinkedList<T> removeCol(int);		// set default int to sizeRow - 1
+	void removeRow(int);				// done - Tom; set default int to sizeCol - 1
+	void removeCol(int);				// set default int to sizeRow - 1
 	T replaceAt(int, int, T);
 	void reverse();						// use stack	
 	void clear();
@@ -298,13 +298,109 @@ void Grid<T>::addCol(LinkedList<T> list) {
 }
 
 template<typename T>
-LinkedList<T> Grid<T>::removeRow(int index) {
-	return;
+void Grid<T>::removeRow(int index) {
+	//only execute of index is in range
+	if (index < sizeCol) {
+		gNode<T> *previousRowNode = nullptr;
+		gNode<T> *currentRowNode = topLeft;
+		gNode<T> *nextRowNode = nullptr;
+		gNode<T> *temp = nullptr;
+		
+		// navigate to row index
+		while (index-- > 0) {
+			currentRowNode = currentRowNode->lower;
+		}
+
+		while (currentRowNode != nullptr) {
+			// get upper and lower rows
+			previousRowNode = currentRowNode->upper;
+			nextRowNode = currentRowNode->lower;
+
+			// reassign uppers and lowers
+			if (currentRowNode->upper != nullptr)
+				(currentRowNode->upper)->lower = currentRowNode->lower;
+			if (currentRowNode->lower != nullptr)
+				(currentRowNode->lower)->upper = currentRowNode->upper;
+
+			// check for limits and reassign if necessary
+			if (topLeft == currentRowNode && nextRowNode != nullptr)
+				topLeft = nextRowNode;
+
+			if (bottomLeft == currentRowNode && previousRowNode != nullptr)
+				bottomLeft = previousRowNode;
+
+			if (topRight == currentRowNode && nextRowNode != nullptr)
+				topRight = nextRowNode;
+
+			if (bottomRight == currentRowNode && previousRowNode != nullptr)
+				bottomRight = previousRowNode;
+
+			// increment current pointer and delete node
+			temp = currentRowNode;
+			currentRowNode = currentRowNode->next;
+			delete temp;
+		}
+
+		// don't forget to reduce the column size you monster
+		sizeCol--;
+
+		// also don't forget to update riw size if necessary
+		if (sizeCol == 0)
+			sizeRow = 0;
+	}
 }
 
 template<typename T>
-LinkedList<T> Grid<T>::removeCol(int index) {
-	return;
+void Grid<T>::removeCol(int index) {
+	//only execute of index is in range
+	if (index < sizeRow) {
+		gNode<T> *previousColNode = nullptr;
+		gNode<T> *currentColNode = topLeft;
+		gNode<T> *nextColNode = nullptr;
+		gNode<T> *temp = nullptr;
+
+		// navigate to col index
+		while (index-- > 0) {
+			currentColNode = currentColNode->next;
+		}
+
+		while (currentColNode != nullptr) {
+			// get upper and lower cols
+			previousColNode = currentColNode->previous;
+			nextColNode = currentColNode->next;
+
+			// reassign uppers and lowers
+			if (currentColNode->previous != nullptr)
+				(currentColNode->previous)->next = currentColNode->next;
+			if (currentColNode->next != nullptr)
+				(currentColNode->next)->previous = currentColNode->previous;
+
+			// check for limits and reassign if necessary
+			if (topLeft == currentColNode && nextColNode != nullptr)
+				topLeft = nextColNode;
+
+			if (bottomLeft == currentColNode && previousColNode != nullptr)
+				bottomLeft = previousColNode;
+
+			if (topRight == currentColNode && nextColNode != nullptr)
+				topRight = nextColNode;
+
+			if (bottomRight == currentColNode && previousColNode != nullptr)
+				bottomRight = previousColNode;
+
+			// increment current pointer and delete node
+			temp = currentColNode;
+			currentColNode = currentColNode->lower;
+			delete temp;
+		}
+
+		// don't forget to reduce the column size you monster
+		sizeRow--;
+
+		// also don't forget to update row size if necessary
+		if (sizeRow == 0)
+			sizeCol = 0;
+	}
 }
 
 template<typename T>
