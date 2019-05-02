@@ -46,8 +46,8 @@ private:
 public:
 	// Constructors
 	Grid();										// done - Tom
-	Grid(int x, int y, T arr[]);
-	Grid(int x, int y, LinkedList<T> list);
+	Grid(int, int, T[]);
+	Grid(int, int, LinkedList<T>);
 	
 	 //Accessors
 	int getSize() const;		// done - Tom
@@ -76,29 +76,24 @@ public:
 	void sortAllCols();
 };
 
-template <typename T>
-Grid<T>::Grid() {
-	topLeft = nullptr;
-	bottomLeft = nullptr;
-	topRight = nullptr;
-	bottomRight = nullptr;
-	sizeRow = 0;
-	sizeCol = 0;
-}
-
 // *********** CONSTRUCTORS *************
 template<typename T>
 Grid<T>::Grid() {
 	// limits
-	*topLeft = nullptr;
-	*topRight = nullptr;
-	*bottomLeft = nullptr;
-	*bottomRight = nullptr;
+	topLeft = nullptr;
+	topRight = nullptr;
+	bottomLeft = nullptr;
+	bottomRight = nullptr;
 
 	//sizes
 	sizeRow = 0;
 	sizeCol = 0;
-};
+}
+
+template<typename T>
+Grid<T>::Grid(int x, int y, T arr[]) {
+
+}
 
 // *********** ACCESSORS ************
 template<typename T>
