@@ -66,7 +66,7 @@ public:
 	void removeCol(int i = -1);			// done - Tom;
 	T replaceAt(int, int, T);			// done - Tom;
 	void reverse();						// use stack	
-	void clear();
+	void clear();						// done - Tom;
 
 	// Sorters
 	void sortGrid();
@@ -349,8 +349,10 @@ void Grid<T>::removeRow(int index) {
 		sizeCol--;
 
 		// also don't forget to update riw size if necessary
-		if (sizeCol == 0)
+		if (sizeCol == 0) {
 			sizeRow = 0;
+			topLeft = topRight = bottomLeft = bottomRight = nullptr;
+		}
 	}
 }
 
@@ -406,8 +408,10 @@ void Grid<T>::removeCol(int index) {
 		sizeRow--;
 
 		// also don't forget to update row size if necessary
-		if (sizeRow == 0)
+		if (sizeRow == 0) {
 			sizeCol = 0;
+			topLeft = topRight = bottomLeft = bottomRight = nullptr;
+		}
 	}
 }
 
@@ -446,8 +450,10 @@ void Grid<T>::reverse() {
 
 template<typename T>
 void Grid<T>::clear() {
-	//stub
-	//Remove row/col
+	if (getSize() > 0) {
+		while (topLeft != nullptr)
+			removeRow();
+	}
 }
 
 // ************* SORTERS ****************
