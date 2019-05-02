@@ -43,37 +43,29 @@ private:
 	int sizeRow;
 	int sizeCol;
 
-	//void addElement(T element);
-
 public:
 	// Constructors
-	Grid();
-
-	Grid(int x, int y, T arr[] ) {
-		// stub
-	};
-
-	Grid(int x, int y, LinkedList<T> list) {
-		//stub
-	};
+	Grid();										// done - Tom
+	Grid(int x, int y, T arr[]);
+	Grid(int x, int y, LinkedList<T> list);
 	
 	 //Accessors
-	int getSize() const;
-	int getRowSize() const;
-	int getColSize() const;
-	T getFirst() const;			// return top left element
-	T getLast() const;			// return bottom right element
-	T replaceAt(int, int, T);
-	void reverse();			// use stack	
+	int getSize() const;		// done - Tom
+	int getRowSize() const;		// done - Tom
+	int getColSize() const;     // done - Tom
+	T get(int, int) const;		// done - Tom;
+	T getFirst() const;			// done - Tom; return top left element
+	T getLast() const;			// done - Tom; return bottom right element
 	bool contains(T) const;
-	T get(int, int) const;
 	bool isEmpty() const;
 	
 	// Modifiers
-	void addRow(LinkedList<T>);	// set default int to sizeCol -1
-	void addCol(LinkedList<T>);	// set default int to sizeRow -1
-	LinkedList<T> removeRow(int);		// set default int to sizeCol -1
-	LinkedList<T> removeCol(int);		// set default int to sizeRow -1
+	void addRow(LinkedList<T>);			// done - Tom;
+	void addCol(LinkedList<T>);			// done - Tom;
+	LinkedList<T> removeRow(int);		// set default int to sizeCol - 1
+	LinkedList<T> removeCol(int);		// set default int to sizeRow - 1
+	T replaceAt(int, int, T);
+	void reverse();						// use stack	
 	void clear();
 
 	// Sorters
@@ -94,6 +86,21 @@ Grid<T>::Grid() {
 	sizeCol = 0;
 }
 
+// *********** CONSTRUCTORS *************
+template<typename T>
+Grid<T>::Grid() {
+	// limits
+	*topLeft = nullptr;
+	*topRight = nullptr;
+	*bottomLeft = nullptr;
+	*bottomRight = nullptr;
+
+	//sizes
+	sizeRow = 0;
+	sizeCol = 0;
+};
+
+// *********** ACCESSORS ************
 template<typename T>
 int Grid<T>::getSize() const {
 	return getRowSize()*getColSize();
@@ -103,13 +110,63 @@ template<typename T>
 int Grid<T>::getRowSize() const {
 	return sizeRow;
 }
-using namespace std;
 
 template<typename T>
 int Grid<T>::getColSize() const {
 	return sizeCol;
 }
 
+template<typename T>
+T Grid<T>::get(int row, int col)const {
+	if (getSize() == 0)
+		throw ("cannot retrieve element from empty grid.");
+	else {
+		gNode<T> *current = topLeft;
+
+		while (row > 0) {
+			current = current->lower;
+			row--;
+		}
+
+		while (col > 0) {
+			current = current->next;
+			col--;
+		}
+
+		return current->element;
+	}
+}
+
+template<typename T>
+T Grid<T>::getFirst() const {
+	if (topLeft == nullptr) {
+		throw runtime_error("Grid out of range");
+	}
+	else
+		return topLeft->element;
+}
+
+template<typename T>
+T Grid<T>::getLast() const {
+	if (bottomRight == nullptr) {
+		throw runtime_error("Grid out of Range");
+	}
+	else {
+		return bottomRight->element;
+	}
+}
+
+template<typename T>
+bool Grid<T>::contains(T element) const {
+	return true;
+}
+
+template<typename T>
+bool Grid<T>::isEmpty() const {
+	return (topLeft == nullptr && topRight == nullptr && bottomLeft == nullptr && bottomRight == nullptr);
+}
+
+// ************* MODIFIERS *************
 template<typename T>
 void Grid<T>::addRow(LinkedList<T> list) {
 	// only add if list is correct size or grid is empty
@@ -155,7 +212,7 @@ void Grid<T>::addRow(LinkedList<T> list) {
 				previousRowNode = previousRowNode->next;
 
 				current->upper = previousRowNode;
-				previousRowNode->lower = current;				
+				previousRowNode->lower = current;
 			}
 
 			bottomRight = current;
@@ -223,68 +280,13 @@ void Grid<T>::addCol(LinkedList<T> list) {
 }
 
 template<typename T>
-T Grid<T>::getFirst() const {
-	if (topLeft == nullptr) {
-		throw runtime_error("Grid out of range");
-	}
-	else
-		return topLeft->element;
-}
-
-template<typename T>
-T Grid<T>::getLast() const {
-	if (bottomRight == nullptr) {
-		throw runtime_error("Grid out of Range");
-	}
-	else {
-		return bottomRight->element;
-	}
-}
-
-template<typename T>
 LinkedList<T> Grid<T>::removeRow(int index) {
 	return;
 }
+
 template<typename T>
 LinkedList<T> Grid<T>::removeCol(int index) {
 	return;
-}
-
-template<typename T>
-void Grid<T>::clear() {
-	//stub
-	//Remove row/col
-}
-
-template<typename T>
-bool Grid<T>::contains(T element) const{
-	return true;
-}
-
-template<typename T>
-T Grid<T>::get(int row, int col)const {
-	if (getSize() == 0)
-		throw ("cannot retrieve element from empty grid.");
-	else {
-		gNode<T> *current = topLeft;
-
-		while (row > 0) {
-			current = current->lower;
-			row--;
-		}
-
-		while (col > 0) {
-			current = current->next;
-			col--;
-		}
-
-		return current->element;
-	}
-}
-
-template<typename T>
-bool Grid<T>::isEmpty() const {
-	return (topLeft == nullptr && topRight == nullptr && bottomLeft == nullptr && bottomRight == nullptr);
 }
 
 template<typename T>
@@ -298,6 +300,14 @@ void Grid<T>::reverse() {
 }
 
 template<typename T>
+void Grid<T>::clear() {
+	//stub
+	//Remove row/col
+}
+
+
+// ************* SORTERS ****************
+template<typename T>
 void Grid<T>::sortGrid() {
 	//Throw grid into Queue, sort queue using sort function, redo grid
 }
@@ -305,6 +315,14 @@ void Grid<T>::sortGrid() {
 template<typename T>
 void Grid<T>::sortRow(int index) {
 	//Bubble
+}
+
+template<typename T>
+void Grid<T>::sortAllRows() {
+	int counter = 0;
+	while (counter < sizeCol) {
+		sortRow(counter++);
+	}
 }
 
 template<typename T>
@@ -317,13 +335,5 @@ void Grid<T>::sortAllCols() {
 	int counter = 0;
 	while (current < sizeRow) {
 		sortCol(counter++);
-	}
-}
-
-template<typename T>
-void Grid<T>::sortAllRows() {	
-	int counter = 0;
-	while (counter < sizeCol) {
-		sortRow(counter++);
 	}
 }
