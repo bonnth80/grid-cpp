@@ -85,6 +85,10 @@ void llConstructorDemo() {
 	cout << "Has 25? (expect 1): " << xGrid.contains(25) << endl;
 	cout << "Has 14? (expect 1): " << xGrid.contains(14) << endl;
 	cout << "Has 82? (expect 0): " << xGrid.contains(82) << endl;
+
+	cout << "\nIs Empty? " << xGrid.isEmpty();
+
+
 }
 
 void runTomDemo() {

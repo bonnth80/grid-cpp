@@ -57,7 +57,7 @@ public:
 	T getFirst() const;			// done - Tom; return top left element
 	T getLast() const;			// done - Tom; return bottom right element
 	bool contains(T) const;		// done - Tom
-	bool isEmpty() const;
+	bool isEmpty() const;		// done - Dave
 	
 	// Modifiers
 	void addRow(LinkedList<T>);			// done - Tom;
@@ -80,14 +80,10 @@ public:
 template<typename T>
 Grid<T>::Grid() {
 	// limits
-	topLeft = nullptr;
-	topRight = nullptr;
-	bottomLeft = nullptr;
-	bottomRight = nullptr;
+	topLeft = topRight = bottomLeft = bottomRight = nullptr;
 
 	//sizes
-	sizeRow = 0;
-	sizeCol = 0;
+	sizeRow = sizeCol = 0;
 }
 
 template<typename T>
