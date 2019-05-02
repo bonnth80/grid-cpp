@@ -151,6 +151,8 @@
   <ItemGroup>
     <ClInclude Include="grid.h" />
     <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="printSets.h" />
+    <ClInclude Include="TomDemo.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
