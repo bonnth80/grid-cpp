@@ -46,8 +46,7 @@ private:
 public:
 	// Constructors
 	Grid();										// done - Tom
-	Grid(int, int, T[]);
-	Grid(int, int, LinkedList<T>);
+	Grid(LinkedList<T>, int, int);				// done - Tom
 	
 	 //Accessors
 	int getSize() const;		// done - Tom
@@ -91,8 +90,21 @@ Grid<T>::Grid() {
 }
 
 template<typename T>
-Grid<T>::Grid(int x, int y, T arr[]) {
+Grid<T>::Grid(LinkedList<T> list, int sizeX, int sizeY) {
+	// execut only if dimensions provided are greater than 1
+	// and only if the dimensions match the size of the list
+	if ((list.getSize() > 0) && (sizeX > 0) && (sizeY > 0)
+		&& (list.getSize() == sizeX * sizeY)) {
+		LinkedList<T> tempList;
 
+		for (int i = 0; i < sizeY; i++) {
+			tempList.clear();
+			for (int x = 0; x < sizeX; x++) {
+				tempList.add(list.removeFirst());
+			}
+			addRow(tempList);
+		}
+	}
 }
 
 // *********** ACCESSORS ************
