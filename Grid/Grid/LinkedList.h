@@ -31,7 +31,7 @@ private:
 	Node<T>* current;
 
 public:
-	Iterator(Node<T>* p)	{
+	Iterator(Node<T>* p) {
 		current = p;
 	};
 
@@ -57,15 +57,15 @@ public:
 		return temp;
 	}
 
-	T& operator*()	{
+	T& operator*() {
 		return current->element;
 	}
 
-	bool operator==(const Iterator<T>& iterator)	{
+	bool operator==(const Iterator<T>& iterator) {
 		return current == iterator.current;
 	}
 
-	bool operator!=(const Iterator<T>& iterator)	{
+	bool operator!=(const Iterator<T>& iterator) {
 		return current != iterator.current;
 	}
 };
@@ -94,8 +94,8 @@ public:
 	T get(int index) const;
 	Node<T>* getAddress(int index) const;
 	int indexOf(T element) const;
-	int lastIndexOf(T element) const;
 	bool isEmpty() const;
+	int lastIndexOf(T element) const;
 	void remove(T element);
 	int getSize() const;
 	T removeAt(int index);
@@ -111,6 +111,7 @@ public:
 		return Iterator<T>(tail->next);
 	};
 };
+
 
 template<typename T>
 LinkedList<T>::LinkedList()
@@ -148,7 +149,7 @@ void LinkedList<T>::addFirst(T element)
 		head->previous = newNode;
 	size++;
 	//if (tail == nullptr)
-		tail = head;
+	tail = head;
 }
 
 template<typename T>
@@ -366,7 +367,7 @@ int LinkedList<T>::lastIndexOf(T element) const {
 		throw runtime_error("No elements in the list");
 	else {
 		Node<T> *current = head;
-		int position = size-1;
+		int position = size - 1;
 		while (current != nullptr && current->element != element) {
 			position--;
 			current = current->previous;
