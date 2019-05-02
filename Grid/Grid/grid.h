@@ -62,8 +62,8 @@ public:
 	// Modifiers
 	void addRow(LinkedList<T>);			// done - Tom;
 	void addCol(LinkedList<T>);			// done - Tom;
-	void removeRow(int);				// done - Tom; set default int to sizeCol - 1
-	void removeCol(int);				// set default int to sizeRow - 1
+	void removeRow(int i = -1);				// done - Tom;
+	void removeCol(int i = -1);				// done - Tom;
 	T replaceAt(int, int, T);
 	void reverse();						// use stack	
 	void clear();
@@ -299,6 +299,10 @@ void Grid<T>::addCol(LinkedList<T> list) {
 
 template<typename T>
 void Grid<T>::removeRow(int index) {
+	// interpret default arguments
+	if (index == -1)
+		index = sizeCol - 1;
+	
 	//only execute of index is in range
 	if (index < sizeCol) {
 		gNode<T> *previousRowNode = nullptr;
@@ -352,6 +356,10 @@ void Grid<T>::removeRow(int index) {
 
 template<typename T>
 void Grid<T>::removeCol(int index) {
+	// interpret default arguments
+	if (index == -1)
+		index = sizeRow - 1;
+
 	//only execute of index is in range
 	if (index < sizeRow) {
 		gNode<T> *previousColNode = nullptr;

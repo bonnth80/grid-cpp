@@ -110,13 +110,13 @@ void removeDemo() {
 	Grid<int> xGrid = addRowColDemo();
 	cout << "\n\n************** removeDemo() *************\n";
 
-	xGrid.removeRow(2);	
+	xGrid.removeRow();	
 	cout << "\nNew Grid after removeRow(): \n\t";
 	cout << "Size: " << xGrid.getSize() << endl;
 	printGrid(xGrid);
 
 
-	xGrid.removeCol(3);
+	xGrid.removeCol();
 	cout << "\nNew Grid after removeCol(): \n\t";
 	cout << "Size: " << xGrid.getSize() << endl;
 	printGrid(xGrid);
