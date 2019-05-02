@@ -20,6 +20,7 @@ public:
 		upper = nullptr;
 		lower = nullptr;
 	}
+
 	gNode(T element)			// Constructor
 	{
 		this->element = element;
@@ -55,7 +56,7 @@ public:
 	T get(int, int) const;		// done - Tom;
 	T getFirst() const;			// done - Tom; return top left element
 	T getLast() const;			// done - Tom; return bottom right element
-	bool contains(T) const;
+	bool contains(T) const;		// done - Tom
 	bool isEmpty() const;
 	
 	// Modifiers
@@ -164,8 +165,22 @@ T Grid<T>::getLast() const {
 }
 
 template<typename T>
-bool Grid<T>::contains(T element) const {
-	return true;
+bool Grid<T>::contains(T searchKey) const {
+	gNode<T> *currentRowNode = topLeft;
+	gNode<T> *currentNode = nullptr;
+
+	while (currentRowNode != nullptr) {
+		currentNode = currentRowNode;
+		while (currentNode != nullptr) {
+			if (currentNode->element != searchKey)
+				currentNode = currentNode->next;
+			else
+				return true;
+		}
+		currentRowNode = currentRowNode->lower;
+	}
+
+	return false;
 }
 
 template<typename T>
@@ -311,7 +326,6 @@ void Grid<T>::clear() {
 	//stub
 	//Remove row/col
 }
-
 
 // ************* SORTERS ****************
 template<typename T>

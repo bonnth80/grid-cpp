@@ -1,6 +1,8 @@
 #pragma once
 #include "printSets.h"
 
+using namespace std;
+
 void addRowColDemo() {
 	Grid<int> xGrid;
 	LinkedList<int> rowListA, rowListB, rowListC,
@@ -74,6 +76,15 @@ void llConstructorDemo() {
 	Grid<int> xGrid(xList,4,3);
 
 	printGrid(xGrid);
+
+	cout << endl;
+	cout << "Has 99? (expect 0): " << xGrid.contains(99) << endl;
+	cout << "Has 37? (expect 1): " << xGrid.contains(37) << endl;
+	cout << "Has 50? (expect 0): " << xGrid.contains(50) << endl;
+	cout << "Has 17? (expect 0): " << xGrid.contains(17) << endl;
+	cout << "Has 25? (expect 1): " << xGrid.contains(25) << endl;
+	cout << "Has 14? (expect 1): " << xGrid.contains(14) << endl;
+	cout << "Has 82? (expect 0): " << xGrid.contains(82) << endl;
 }
 
 void runTomDemo() {
