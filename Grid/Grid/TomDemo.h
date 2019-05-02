@@ -125,8 +125,22 @@ void removeDemo() {
 	
 }
 
+void replaceAtDemo() {
+	Grid<int> xGrid = addRowColDemo();
+	int x = 0;
+	cout << "\n\n************** replaceAtDemo() *************\n";
+
+	x = xGrid.replaceAt(1, 12, 666);
+	cout << "\nNew Grid after replaceAt(): \n\t";
+	cout << "Size: " << xGrid.getSize() << endl;
+	printGrid(xGrid);
+
+	cout << "\nReplaced value: " << x << endl;;
+}
+
 void runTomDemo() {
 	//addRowColDemo();
 	//llConstructorDemo();
-	removeDemo();
+	//removeDemo();
+	replaceAtDemo();
 }

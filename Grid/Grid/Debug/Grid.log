@@ -2,5 +2,17 @@
 c:\users\zeros\onedrive\repositories\gridcpp\grid\grid\linkedlist.h(88): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
   c:\users\zeros\onedrive\repositories\gridcpp\grid\grid\linkedlist.h(113): note: see reference to class template instantiation 'LinkedList<T>' being compiled
 c:\users\zeros\onedrive\repositories\gridcpp\grid\grid\linkedlist.h(190): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\zeros\onedrive\repositories\gridcpp\grid\grid\grid.h(436): warning C4101: 'exc': unreferenced local variable
+  c:\users\zeros\onedrive\repositories\gridcpp\grid\grid\grid.h(415): note: while compiling class template member function 'int Grid<int>::replaceAt(int,int,T)'
+          with
+          [
+              T=int
+          ]
+  c:\users\zeros\onedrive\repositories\gridcpp\grid\grid\tomdemo.h(133): note: see reference to function template instantiation 'int Grid<int>::replaceAt(int,int,T)' being compiled
+          with
+          [
+              T=int
+          ]
+  c:\users\zeros\onedrive\repositories\gridcpp\grid\grid\printsets.h(4): note: see reference to class template instantiation 'Grid<int>' being compiled
   Grid.vcxproj -> C:\Users\zeros\OneDrive\Repositories\gridcpp\Grid\Debug\Grid.exe
   Grid.vcxproj -> C:\Users\zeros\OneDrive\Repositories\gridcpp\Grid\Debug\Grid.pdb (Full PDB)

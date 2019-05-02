@@ -62,9 +62,9 @@ public:
 	// Modifiers
 	void addRow(LinkedList<T>);			// done - Tom;
 	void addCol(LinkedList<T>);			// done - Tom;
-	void removeRow(int i = -1);				// done - Tom;
-	void removeCol(int i = -1);				// done - Tom;
-	T replaceAt(int, int, T);
+	void removeRow(int i = -1);			// done - Tom;
+	void removeCol(int i = -1);			// done - Tom;
+	T replaceAt(int, int, T);			// done - Tom;
 	void reverse();						// use stack	
 	void clear();
 
@@ -413,7 +413,30 @@ void Grid<T>::removeCol(int index) {
 
 template<typename T>
 T Grid<T>::replaceAt(int rowIndex, int colIndex, T element) {
-	//Returns Replaced Element
+	// only run if given coordinates are within range
+	try {
+		if (rowIndex < sizeRow && colIndex < sizeCol) {
+			gNode<T> *current = topLeft;
+
+			while (colIndex-- > 0)
+				current = current->lower;
+
+			while (rowIndex-- > 0)
+				current = current->next;
+
+			T temp = current->element;
+			current->element = element;
+
+			return temp;
+		}
+		else {
+			throw 0;
+		}
+	}
+	catch (int exc) {
+		cout << "replaceAt() index out of range\n";
+		return NULL;
+	}
 }
 
 template<typename T>
