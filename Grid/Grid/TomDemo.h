@@ -1,4 +1,5 @@
 #pragma once
+#include <stack>
 #include "printSets.h"
 
 // This is a test2
@@ -147,6 +148,16 @@ void clearDemo() {
 	cout << "\nNew Grid after clear(): \n\t";
 	cout << "Size: " << xGrid.getSize() << endl;
 	printGrid(xGrid);
+}
+
+void reverseDemo() {
+	Grid<int> xGrid = addRowColDemo();
+	cout << "\n\n************** reverseDemo() *************\n";
+
+	xGrid.reverse();
+	cout << "\nNew Grid after reverse(): \n\t";
+	cout << "Size: " << xGrid.getSize() << endl;
+	printGrid(xGrid);
 
 }
 
@@ -155,6 +166,7 @@ void runTomDemo() {
 	//llConstructorDemo();
 	//removeDemo();
 	//replaceAtDemo();
-	clearDemo();
-
+	//clearDemo();
+	reverseDemo();
+	cout << endl;
 }

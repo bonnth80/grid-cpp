@@ -2,17 +2,16 @@
 
 void printGrid(const Grid<int> &g) {
 	if (g.getSize()) {
-		for (int x = 0; x < g.getColSize(); x++) {
+		for (int y = 0; y < g.getColSize(); y++) {
 			cout << "\t";
 
-			for (int y = 0; y < g.getRowSize(); y++)
+			for (int x = 0; x < g.getRowSize(); x++)
 				cout << g.get(x, y) << " ";
 
 			cout << endl;
 		}
 	}
 }
-
 
 void printList(const LinkedList<int> list) //...
 {

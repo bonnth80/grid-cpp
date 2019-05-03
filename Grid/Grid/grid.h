@@ -1,9 +1,8 @@
 #pragma once
 #include "LinkedList.h"
-#include <queue>
 #include <stack>
 #include <stdexcept>
-#include <algorithm>
+#include <queue>
 using namespace std;
 
 template <typename T>
@@ -68,7 +67,7 @@ public:
 	void removeRow(int i = -1);			// done - Tom;
 	void removeCol(int i = -1);			// done - Tom;
 	T replaceAt(int, int, T);			// done - Tom;
-	void reverse();						// use stack	
+	void reverse();						// done - Tom; use stack	
 	void clear();						// done - Tom;
 
 	// Sorters
@@ -124,21 +123,17 @@ int Grid<T>::getColSize() const {
 }
 
 template<typename T>
-T Grid<T>::get(int row, int col)const {
+T Grid<T>::get(int x, int y)const {
 	if (getSize() == 0)
 		throw ("cannot retrieve element from empty grid.");
 	else {
 		gNode<T> *current = topLeft;
 
-		while (row > 0) {
+		while (y-- > 0)
 			current = current->lower;
-			row--;
-		}
 
-		while (col > 0) {
+		while (x-- > 0)
 			current = current->next;
-			col--;
-		}
 
 		return current->element;
 	}
@@ -449,6 +444,20 @@ T Grid<T>::replaceAt(int rowIndex, int colIndex, T element) {
 template<typename T>
 void Grid<T>::reverse() {
 	//Use a stack to feed rows into stack and reverse the grid
+	stack<T> s;
+	for (int y = 0; y < sizeCol; y++) {
+		for (int x = 0; x < sizeRow; x++) {
+			//cout << "\npushing " << get(x, y);
+			s.push(get(x, y));
+		}
+	}
+
+	for (int y = 0; y < sizeCol; y++) {
+		for (int x = 0; x < sizeRow; x++) {
+			replaceAt(x, y, s.top());
+			s.pop();
+		}
+	}
 }
 
 template<typename T>
