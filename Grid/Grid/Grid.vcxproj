@@ -149,6 +149,7 @@
     <ClCompile Include="source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DavesTest.h" />
     <ClInclude Include="grid.h" />
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="printSets.h" />

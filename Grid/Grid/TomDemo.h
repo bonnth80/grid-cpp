@@ -1,6 +1,7 @@
 #pragma once
 #include <stack>
 #include "printSets.h"
+
 // This is a test2
 using namespace std;
 
@@ -92,7 +93,7 @@ void llConstructorDemo() {
 	Grid<int> someGrid(xList,4,3);
 
 	printGrid(someGrid);
-
+	
 	cout << endl;
 	cout << "Has 99? (expect 0): " << someGrid.contains(99) << endl;
 	cout << "Has 37? (expect 1): " << someGrid.contains(37) << endl;
