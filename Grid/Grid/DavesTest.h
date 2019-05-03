@@ -27,6 +27,7 @@ void sortTestDemo() {
 
 	cout << "Size: " << testGrid.getSize() << endl;
 	printGrid(testGrid);
-	testGrid.sortGrid();
+	int i = 1;
+	testGrid.sortAllCols();
 	printGrid(testGrid);
 }

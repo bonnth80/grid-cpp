@@ -71,11 +71,11 @@ public:
 	void clear();						// done - Tom;
 
 	// Sorters
-	void sortGrid();
-	void sortRow(int);
-	void sortAllRows();
-	void sortCol(int);
-	void sortAllCols();
+	void sortGrid(); //done -Dave
+	void sortRow(int);//done -Dave
+	void sortAllRows();//done -Dave
+	void sortCol(int);//done -Dave
+	void sortAllCols();//done -Dave
 };
 
 // *********** CONSTRUCTORS *************
@@ -473,22 +473,18 @@ template<typename T>
 void Grid<T>::sortGrid() {
 
 	vector<T> v;
-	gNode<T> *temp = nullptr;
-	for (int y = 0; y < sizeCol; y++) {
+	
+	for (int y = 0; y < sizeCol; y++) { //throws the list into a vector for sorting
 		for (int x = 0; x < sizeRow; x++) {
 			
 			v.push_back(get(x, y));
 		}
 	}
+	sort(v.begin(),v.end());//Sorts the vector(This can be changes to sort in reverse as well
 	
-	cout << "TEST";
-
-	sort(v.begin(),v.end());
-
-	for (int y = 0; y < sizeCol; y++) {
-		for (int x = 0; x < sizeRow; x++) {
-			
-			replaceAt(y, x,v.front());
+	for (int x = 0; x < sizeRow; x++) {//Iterates through the grid to replace all value
+		for (int y = 0; y < sizeCol; y++) {
+			replaceAt(x, y,v.front());
 			v.erase(v.begin());
 		}
 	}
@@ -496,12 +492,22 @@ void Grid<T>::sortGrid() {
 }
 
 template<typename T>
-void Grid<T>::sortRow(int index) {
-	//Bubble
+void Grid<T>::sortRow(int index) {//Sorts a given row
+	vector<T> v;
+
+	for (int i = 0; i < sizeRow; i++) {//pushes row into a vector for sorting
+		v.push_back(get(i,index));
+	}
+	sort(v.begin(), v.end());
+
+	for (int i = 0; i < sizeRow; i++) {//Iteraties through the row, replacing with new sorted values
+		replaceAt(i,index, v.front());
+		v.erase(v.begin());
+	}
 }
 
 template<typename T>
-void Grid<T>::sortAllRows() {
+void Grid<T>::sortAllRows() {//Recursivily calls the sortRow() function to sort every row
 	int counter = 0;
 	while (counter < sizeCol) {
 		sortRow(counter++);
@@ -509,14 +515,24 @@ void Grid<T>::sortAllRows() {
 }
 
 template<typename T>
-void Grid<T>::sortCol(int index) {
-	//Bubble
+void Grid<T>::sortCol(int index) {//Sorts a given col
+	vector<T> v;
+
+	for (int i = 0; i < sizeCol; i++) {//pushes col into a vector for sorting
+		v.push_back(get(index,i));
+	}
+	sort(v.begin(), v.end());
+
+	for (int i = 0; i < sizeCol; i++) {//Iteraties through the col, replacing with new sorted values
+		replaceAt( index,i, v.front());
+		v.erase(v.begin());
+	}
 }
 
 template<typename T>
-void Grid<T>::sortAllCols() {
+void Grid<T>::sortAllCols() {//Recursivily calls the sortCol() function to sort every row
 	int counter = 0;
-	while (current < sizeRow) {
+	while (counter < sizeRow) {
 		sortCol(counter++);
 	}
 }
