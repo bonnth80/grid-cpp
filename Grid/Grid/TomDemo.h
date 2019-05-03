@@ -1,12 +1,14 @@
 #pragma once
 #include "printSets.h"
+
 // This is a test2
 using namespace std;
 
-void addRowColDemo() {
+
+Grid<int> addRowColDemo() {
 	cout << "\n************* addRowColDemo() ***********\n";
 	Grid<int> xGrid;
-	LinkedList<int> rowListA, rowListB, rowListC,
+	LinkedList<int> rowListA, rowListB, rowListC, rowListD,
 		colListD, colListE;
 
 	cout << "::: Rows \n";
@@ -16,8 +18,11 @@ void addRowColDemo() {
 	rowListB.add(29); rowListB.add(7); rowListB.add(21);
 	rowListB.add(54); rowListB.add(33);	rowListB.add(44);
 
-	rowListC.add(29); rowListC.add(7);	rowListC.add(21);
-	rowListC.add(54); rowListC.add(33);	rowListC.add(38);
+	rowListC.add(11); rowListC.add(22);	rowListC.add(33);
+	rowListC.add(44); rowListC.add(55);	rowListC.add(66);
+
+	rowListD.add(60); rowListD.add(74);	rowListD.add(81);
+	rowListD.add(59); rowListD.add(30);	rowListD.add(47);
 
 	cout << "rowListA: ";
 	printList(rowListA);
@@ -25,12 +30,15 @@ void addRowColDemo() {
 	printList(rowListB);
 	cout << "rowListC: ";
 	printList(rowListC);
+	cout << "rowListD: ";
+	printList(rowListD);
 
 	cout << "\nAdding rows to xGrid: \n\t";
 
 	xGrid.addRow(rowListA);
 	xGrid.addRow(rowListB);
 	xGrid.addRow(rowListC);
+	xGrid.addRow(rowListD);
 
 	cout << "Size: " << xGrid.getSize() << endl;
 	printGrid(xGrid);
@@ -39,10 +47,12 @@ void addRowColDemo() {
 	colListD.add(120);
 	colListD.add(141);
 	colListD.add(192);
+	colListD.add(113);
 
 	colListE.add(241);
 	colListE.add(288);
 	colListE.add(252);
+	colListE.add(256);
 
 	cout << "colListD: ";
 	printList(colListD);
@@ -56,6 +66,8 @@ void addRowColDemo() {
 
 	cout << "Size: " << xGrid.getSize() << endl;
 	printGrid(xGrid);
+
+	return xGrid;
 };
 
 void llConstructorDemo() {
@@ -80,7 +92,7 @@ void llConstructorDemo() {
 	Grid<int> someGrid(xList,4,3);
 
 	printGrid(someGrid);
-
+	
 	cout << endl;
 	cout << "Has 99? (expect 0): " << someGrid.contains(99) << endl;
 	cout << "Has 37? (expect 1): " << someGrid.contains(37) << endl;
@@ -95,7 +107,54 @@ void llConstructorDemo() {
 
 }
 
+void removeDemo() {
+	Grid<int> xGrid = addRowColDemo();
+	cout << "\n\n************** removeDemo() *************\n";
+
+	xGrid.removeRow();	
+	cout << "\nNew Grid after removeRow(): \n\t";
+	cout << "Size: " << xGrid.getSize() << endl;
+	printGrid(xGrid);
+
+
+	xGrid.removeCol();
+	cout << "\nNew Grid after removeCol(): \n\t";
+	cout << "Size: " << xGrid.getSize() << endl;
+	printGrid(xGrid);
+
+	cout << endl << endl;
+	
+}
+
+void replaceAtDemo() {
+	Grid<int> xGrid = addRowColDemo();
+	int x = 0;
+	cout << "\n\n************** replaceAtDemo() *************\n";
+
+	x = xGrid.replaceAt(1, 12, 666);
+	cout << "\nNew Grid after replaceAt(): \n\t";
+	cout << "Size: " << xGrid.getSize() << endl;
+	printGrid(xGrid);
+
+	cout << "\nReplaced value: " << x << endl;;
+}
+
+void clearDemo() {
+	Grid<int> xGrid = addRowColDemo();
+	cout << "\n\n************** clearDemo() *************\n";
+
+	xGrid.clear();
+	cout << "\nNew Grid after clear(): \n\t";
+	cout << "Size: " << xGrid.getSize() << endl;
+	printGrid(xGrid);
+
+}
+
 void runTomDemo() {
-	addRowColDemo();
-	llConstructorDemo();
+	//addRowColDemo();
+	//llConstructorDemo();
+	//removeDemo();
+	//replaceAtDemo();
+	clearDemo();
+
 }
