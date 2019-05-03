@@ -12,20 +12,18 @@ void sortTestDemo() {
 	rowListB.add(29); rowListB.add(7); rowListB.add(21);
 	rowListB.add(54); rowListB.add(33);	rowListB.add(44);
 
-	rowListC.add(29); rowListC.add(7);	rowListC.add(21);
-	rowListC.add(54); rowListC.add(33);	rowListC.add(38);
+
 	cout << "rowListA: ";
 	printList(rowListA);
 	cout << "rowListB: ";
 	printList(rowListB);
-	cout << "rowListC: ";
-	printList(rowListC);
+
 
 	cout << "\nAdding rows to xGrid: \n\t";
 
 	testGrid.addRow(rowListA);
 	testGrid.addRow(rowListB);
-	testGrid.addRow(rowListC);
+
 
 	cout << "Size: " << testGrid.getSize() << endl;
 	printGrid(testGrid);

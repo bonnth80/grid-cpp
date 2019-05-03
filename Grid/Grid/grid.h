@@ -462,26 +462,28 @@ void Grid<T>::clear() {
 // ************* SORTERS ****************
 template<typename T>
 void Grid<T>::sortGrid() {
-	//Throw grid into Queue, sort queue using sort function, redo grid
-	queue<T> q;
 
-	
-	LinkedList<T> newGrid;
+	vector<T> v;
+	gNode<T> *temp = nullptr;
 	for (int y = 0; y < sizeCol; y++) {
 		for (int x = 0; x < sizeRow; x++) {
-			q.push(get(x, y));
+			
+			v.push_back(get(x, y));
 		}
 	}
 	
+	cout << "TEST";
 
-	sort(q.front(), q.back());
+	sort(v.begin(),v.end());
 
 	for (int y = 0; y < sizeCol; y++) {
 		for (int x = 0; x < sizeRow; x++) {
-			q.add(get(x, y));
+			
+			replaceAt(y, x,v.front());
+			v.erase(v.begin());
 		}
 	}
-	return;
+	
 }
 
 template<typename T>
