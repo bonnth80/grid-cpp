@@ -13,7 +13,6 @@ void printGrid(const Grid<int> &g) {
 	}
 }
 
-
 void printList(const LinkedList<int> list) //...
 {
 	cout << "\tList Size: " << list.getSize() << " | ";

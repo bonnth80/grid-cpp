@@ -2,6 +2,7 @@
 #include "LinkedList.h"
 #include <stack>
 #include <stdexcept>
+#include <queue>
 using namespace std;
 
 template <typename T>
@@ -471,6 +472,24 @@ void Grid<T>::clear() {
 template<typename T>
 void Grid<T>::sortGrid() {
 	//Throw grid into Queue, sort queue using sort function, redo grid
+	queue<T> q;
+	
+	for (int y = 0; y < sizeCol; y++) {
+		for (int x = 0; x < sizeRow; x++) {
+			q.push(get(x, y));
+		}
+	}
+
+	//sort(q.front(), q.back());
+
+	for (int y = 0; y < sizeCol; y++) {
+		for (int x = 0; x < sizeRow; x++) {
+
+			replaceAt(x, y, q.front());
+			q.pop();
+		}
+	}
+	return;
 }
 
 template<typename T>

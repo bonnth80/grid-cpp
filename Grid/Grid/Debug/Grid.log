@@ -2,13 +2,13 @@
 c:\users\zeros\onedrive\repositories\gridcpp\grid\grid\linkedlist.h(88): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
   c:\users\zeros\onedrive\repositories\gridcpp\grid\grid\linkedlist.h(113): note: see reference to class template instantiation 'LinkedList<T>' being compiled
 c:\users\zeros\onedrive\repositories\gridcpp\grid\grid\linkedlist.h(190): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
-c:\users\zeros\onedrive\repositories\gridcpp\grid\grid\grid.h(437): warning C4101: 'exc': unreferenced local variable
-  c:\users\zeros\onedrive\repositories\gridcpp\grid\grid\grid.h(416): note: while compiling class template member function 'int Grid<int>::replaceAt(int,int,T)'
+c:\users\zeros\onedrive\repositories\gridcpp\grid\grid\grid.h(438): warning C4101: 'exc': unreferenced local variable
+  c:\users\zeros\onedrive\repositories\gridcpp\grid\grid\grid.h(417): note: while compiling class template member function 'int Grid<int>::replaceAt(int,int,T)'
           with
           [
               T=int
           ]
-  c:\users\zeros\onedrive\repositories\gridcpp\grid\grid\tomdemo.h(134): note: see reference to function template instantiation 'int Grid<int>::replaceAt(int,int,T)' being compiled
+  c:\users\zeros\onedrive\repositories\gridcpp\grid\grid\tomdemo.h(135): note: see reference to function template instantiation 'int Grid<int>::replaceAt(int,int,T)' being compiled
           with
           [
               T=int
